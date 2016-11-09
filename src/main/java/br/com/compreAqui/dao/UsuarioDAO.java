@@ -33,8 +33,6 @@ public class UsuarioDAO extends DAO<Usuario> {
 
 	@Override
 	void geraDados() {
-		geraIdEAdiciona(new Usuario("professor@sematecsolucoes.com.br", "professor"));
-		geraIdEAdiciona(new Usuario("diretor@sematecsolucoes.com.br", "diretor"));
 		geraIdEAdiciona(new Usuario("admin@admin.com", "admin"));
 		geraIdEAdiciona(new Usuario("teste@teste.com", "teste"));
 	}
