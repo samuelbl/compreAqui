@@ -1,8 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
-<c:import url="/WEB-INF/paginas/cabecalho.jsp"/>
+<c:import url="/WEB-INF/paginas/cabecalho.jsp" />
 <body>
-	<form action="executa?tarefa=login" method="POST">
+	<form action="executa" method="POST">
 		<div>
 			Email: <input type="email" name="email" />
 		</div>
@@ -10,11 +10,12 @@
 			Senha: <input type="password" name="senha" /> <input type="submit"
 				value="Enviar" />
 		</div>
+		<input type="hidden" value ="login" name="tarefa">
 	</form>
 
-	<c:url value="/cadastrar"> Cadastrar novo usuário </c:url>
+	<a href="<c:url value='/cadastrar'/>"> Cadastrar novo usuário </a>
 
-	
-<c:import url="/WEB-INF/paginas/rodape.jsp"/>
+
+	<c:import url="/WEB-INF/paginas/rodape.jsp" />
 </body>
 </html>

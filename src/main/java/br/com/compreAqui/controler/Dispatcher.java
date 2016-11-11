@@ -30,6 +30,8 @@ public class Dispatcher extends HttpServlet{
 		switch (tarefa) {
 		case "login":
 			localDestino = new LoginServlet().login(req,resp);
+		case "loja":
+			//localDestino = new LojaServlet().toString();
 			
 			break;
 
