@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("usuarioLogado", usuario);
 			retorno = "/executa?tarefa=loja";
 		} else {
-			retorno = "/executa?tarefa=login";
+			retorno = "index.jsp";
 		}
 		return retorno;
 	}
