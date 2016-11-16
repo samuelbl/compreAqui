@@ -2,17 +2,29 @@ package br.com.compreAqui.modelo;
 
 import java.math.BigDecimal;
 
-public class Produto {
-	private String id;
+public class Produto extends BaseEntity {
+	
+	private static final long serialVersionUID = 1L;
+	private Long id;
 	private String nome;
 	private String imagem;
 	private BigDecimal valor;
-	public String getId() {
+	
+	public Produto(){
+		this("","",BigDecimal.ZERO);
+	}
+	
+	public Produto(String nome, String imagem, BigDecimal valor) {
+		super();
+		this.nome = nome;
+		this.imagem = imagem;
+		this.valor = valor;
+	}
+	
+	public Long getId() {
 		return id;
 	}
-	public void setId(String id) {
-		this.id = id;
-	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -30,6 +42,12 @@ public class Produto {
 	}
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
+	}
+
+	@Override
+	public void setId(Long id) {
+		this.id = id;
+		
 	} 
 
 }

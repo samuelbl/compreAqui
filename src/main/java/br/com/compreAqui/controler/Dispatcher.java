@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.compreAqui.web.LoginServlet;
+import br.com.compreAqui.web.LojaServlet;
+import br.com.compreAqui.web.UsuarioServlet;
 
 @WebServlet(urlPatterns = "/executa")
 public class Dispatcher extends HttpServlet{
@@ -30,10 +32,27 @@ public class Dispatcher extends HttpServlet{
 		switch (tarefa) {
 		case "login":
 			localDestino = new LoginServlet().login(req,resp);
-		case "loja":
-			//localDestino = new LojaServlet().toString();
-			
 			break;
+		case "loja":
+			localDestino = new LojaServlet().mostrarProdutos(req, resp);
+			break;
+		case "logout":
+			localDestino = new LoginServlet().logout(req,resp);
+		case "adicionarAoCarrinho":
+			localDestino = new LojaServlet().adicionarAoCarrinho(req, resp);
+			break;
+		case "cadastrarUsuario":
+			localDestino = new UsuarioServlet().cadastrarUsuario(req, resp);
+			break;
+		case "listaUsuarios":
+			localDestino = new UsuarioServlet().listaUsuarios(req, resp);
+			break;
+		case "carrinho":
+			localDestino = "WEB-INF/paginas/carrinho.jsp";
+			break;
+
+
+		
 
 		default:
 			localDestino = "index.jsp";

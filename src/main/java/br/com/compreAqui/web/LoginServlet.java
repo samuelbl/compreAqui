@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import br.com.compreAqui.dao.CarrinhoUserDAO;
 import br.com.compreAqui.dao.UsuarioDAO;
+import br.com.compreAqui.modelo.CarrinhoCompra;
 import br.com.compreAqui.modelo.Usuario;
 
 public class LoginServlet extends HttpServlet {
@@ -19,14 +21,23 @@ public class LoginServlet extends HttpServlet {
 		String email = req.getParameter("email");
 		String senha = req.getParameter("senha");
 		Usuario usuario = new Usuario(email, senha);
-		Boolean existe = UsuarioDAO.getInstance().existe(usuario);
-		if (existe) {
+		Long userId = UsuarioDAO.getInstance().existeRetornaId(usuario);
+		if (userId!=null) {
 			HttpSession session = req.getSession();
+			usuario.setId(userId);
 			session.setAttribute("usuarioLogado", usuario);
+			CarrinhoCompra carrinho = CarrinhoUserDAO.getInstance().verificaExistenciaCarrinho(userId);
+			session.setAttribute("carrinhoCompra", carrinho);
 			retorno = "/executa?tarefa=loja";
 		} else {
 			retorno = "index.jsp";
 		}
 		return retorno;
+	}
+
+	public String logout(HttpServletRequest req, HttpServletResponse resp) {
+			req.getSession().removeAttribute("usuarioLogado");
+			req.getSession().removeAttribute("carrinho");
+			return "index.jsp";	
 	}
 }

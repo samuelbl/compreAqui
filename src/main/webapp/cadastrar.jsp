@@ -2,6 +2,7 @@
 <html>
 <c:import url="cabecalho.jsp" />
 <body>
+<H2> Cadastro de usuários</H2> <br/>
 	<form action="executa" method="POST">
 		<div>
 			Email: <input type="email" name="email" />
@@ -10,12 +11,6 @@
 			Senha: <input type="password" name="senha" /> <input type="submit"
 				value="Enviar" />
 		</div>
-		<input type="hidden" value ="login" name="tarefa">
+		<input type="hidden" value ="cadastrarUsuario" name="tarefa">
 	</form>
-
-	<a href="<c:url value='/cadastrar.jsp'/>"> Cadastrar novo usuário </a>
-
-
-	<c:import url="rodape.jsp" />
-</body>
-</html>
+<c:import url="rodape.jsp" />

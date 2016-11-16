@@ -19,14 +19,13 @@ public class UsuarioDAO extends DAO<Usuario> {
 		geraDados();
 	}
 
-	public boolean existe(Usuario usuario) {
-		Long i = 0l;
-		boolean retorno = false;
-		while (!retorno && i < LISTA.size()) {
-			if (StringUtils.equalsIgnoreCase(LISTA.get(i).getEmail(), usuario.getEmail()) && StringUtils.equalsIgnoreCase(LISTA.get(i).getSenha(), usuario.getSenha())) {
-				return true;
+	public Long existeRetornaId(Usuario usuario) {
+		Long retorno = null;
+		for(Long i=0l;retorno==null && i < LISTA.size();i++){
+			if (StringUtils.equalsIgnoreCase(LISTA.get(i).getEmail(), usuario.getEmail())
+					&& StringUtils.equalsIgnoreCase(LISTA.get(i).getSenha(), usuario.getSenha())) {
+				retorno = LISTA.get(i).getId();
 			}
-			i++;
 		}
 		return retorno;
 	}

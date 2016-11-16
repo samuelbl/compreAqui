@@ -4,7 +4,7 @@ import br.com.compreAqui.modelo.BaseEntity;
 
 public class Usuario extends BaseEntity {
 	private static final long serialVersionUID = 1L;
-	private String id;
+	private Long id;
 	private String email;
 	private String senha;
 	
@@ -19,11 +19,9 @@ public class Usuario extends BaseEntity {
 	}
 	
 	public Long getId() {
-		return Long.parseLong(id);
+		return this.id;
 	}
-	public void setId(String id) {
-		this.id = id;
-	}
+	
 	public String getEmail() {
 		return email;
 	}
@@ -38,7 +36,7 @@ public class Usuario extends BaseEntity {
 	}
 	@Override
 	public void setId(Long id) {
-		this.id = Long.toString(id); 
+		this.id = id; 
 		
 	}
 }

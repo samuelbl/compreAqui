@@ -14,8 +14,9 @@ public abstract class DAO<T extends BaseEntity> {
 		this.LISTA = new HashMap<>();
 	}
 
-	public void adiciona(T t) {
+	public T adiciona(T t) {
 		geraIdEAdiciona(t);
+		return t;
 	}
 
 	public void atualiza(T t) {
