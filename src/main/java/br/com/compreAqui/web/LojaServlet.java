@@ -1,5 +1,6 @@
 package br.com.compreAqui.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServlet;
@@ -33,14 +34,24 @@ public class LojaServlet extends HttpServlet {
 		CarrinhoDAO.getInstance().atualizaCarrinhoEtotal(carrinho);
 		return "executa?tarefa=carrinho";
 	}
-
-	public String mostrarCarrinho(HttpServletRequest req, HttpServletResponse resp){
-		CarrinhoCompra carrinho = (CarrinhoCompra) req.getSession().getAttribute("carrinhoCompra");
+	
+	public String removerDoCarrinho(HttpServletRequest req, HttpServletResponse resp){
 		
+		String idItem = req.getParameter("idItem");
+		CarrinhoCompra carrinho = (CarrinhoCompra) req.getSession().getAttribute("carrinhoCompra");
+		CarrinhoDAO.getInstance().removeDoCarrinho(Long.valueOf(idItem), carrinho);
+		return "executa?tarefa=carrinho";
+	}
+
+	public String mostrarCarrinho(HttpServletRequest req, HttpServletResponse resp) {
+		CarrinhoCompra carrinho = (CarrinhoCompra) req.getSession().getAttribute("carrinhoCompra");
+		ArrayList<Produto> produtos = new ArrayList<Produto>(); 
 		for (ItemComercial item : carrinho.getItens()) {
-				Produto produto = ProdutoDAO.getInstance().buscaPorId(Long.getLong(item.getIdProduto()));
+			Produto produto = ProdutoDAO.getInstance().buscaPorId(Long.valueOf(item.getIdProduto()));
+			produtos.add(produto);
 		}
-		return null;
+		req.setAttribute("produtos", produtos);
+		return "WEB-INF/paginas/carrinho.jsp";
 	}
 
 }

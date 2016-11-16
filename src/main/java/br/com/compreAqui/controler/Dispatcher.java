@@ -38,6 +38,7 @@ public class Dispatcher extends HttpServlet{
 			break;
 		case "logout":
 			localDestino = new LoginServlet().logout(req,resp);
+			break;
 		case "adicionarAoCarrinho":
 			localDestino = new LojaServlet().adicionarAoCarrinho(req, resp);
 			break;
@@ -48,7 +49,10 @@ public class Dispatcher extends HttpServlet{
 			localDestino = new UsuarioServlet().listaUsuarios(req, resp);
 			break;
 		case "carrinho":
-			localDestino = "WEB-INF/paginas/carrinho.jsp";
+			localDestino = new LojaServlet().mostrarCarrinho(req, resp);
+			break;
+		case "removerDoCarrinho":
+			localDestino = new LojaServlet().removerDoCarrinho(req, resp);
 			break;
 
 

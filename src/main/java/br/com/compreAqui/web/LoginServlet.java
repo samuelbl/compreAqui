@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
 
 	public String logout(HttpServletRequest req, HttpServletResponse resp) {
 			req.getSession().removeAttribute("usuarioLogado");
-			req.getSession().removeAttribute("carrinho");
-			return "index.jsp";	
+			req.getSession().removeAttribute("carrinhoCompra");
+			return "executa?tarefa=default";	
 	}
 }

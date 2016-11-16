@@ -2,6 +2,8 @@ package br.com.compreAqui.modelo;
 
 import java.math.BigDecimal;
 
+
+
 public class ItemComercial extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 	private Long id;
@@ -51,5 +53,12 @@ public class ItemComercial extends BaseEntity {
 	public Long getId() {
 		return this.id;
 	}
+	
+	public Long getLongIdProduto() {
+		return Long.valueOf(this.idProduto);
+	}
+	
+	
+
 
 }

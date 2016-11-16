@@ -25,6 +25,8 @@ public class Produto extends BaseEntity {
 		return id;
 	}
 	
+	
+	
 	public String getNome() {
 		return nome;
 	}
@@ -43,7 +45,7 @@ public class Produto extends BaseEntity {
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
-
+	
 	@Override
 	public void setId(Long id) {
 		this.id = id;
