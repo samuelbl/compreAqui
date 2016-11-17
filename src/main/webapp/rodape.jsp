@@ -3,6 +3,6 @@
 <br/>
 <br/>
 <c:if test="${not empty usuarioLogado}">
-<a href="<c:url value='/executa?tarefa=logout'/>"><fmt:message key="${msg.logout}"/></a>
+<a href="<c:url value='/executa?tarefa=logout'/>">Sair</a>
 </c:if>
 </html>

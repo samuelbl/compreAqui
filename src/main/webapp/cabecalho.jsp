@@ -35,7 +35,7 @@ li a:hover {
 </head>
 <body>
 
-	<h3> <fmt:message key="${msg.bemvindo}"/> CompreAqui</h3>
+	<h3> Bem vindo ao CompreAqui</h3>
 
 
 	<c:if test="${not empty usuarioLogado}">
